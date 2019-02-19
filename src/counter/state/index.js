@@ -1,5 +1,11 @@
 import { fromJS } from 'immutable';
 
+export const counterActions = {
+    ADD : "ADD",
+    REST : "REST",
+    ADD_NUM : "ADD_NUM"
+}
+
 export const counterState = fromJS({
     counter:{
         nums: 0,
@@ -8,13 +14,19 @@ export const counterState = fromJS({
 });
 
 export const counterReducers = {
-    ADD : (state) =>{
-        return state.updateIn(['counter','nums'],value=>value+1);
+    [counterActions.ADD] : (state) =>{
+        const nums = state.getIn(['counter','nums']);
+        const clicks = state.getIn(['counter','clicks']);
+        return state.set('counter',fromJS({nums:nums+1,clicks:clicks+1}));
     },
-    REST: (state) =>{
-        return state.updateIn(['counter','nums'],value=>value-1);
+    [counterActions.REST]: (state) =>{
+        const nums = state.getIn(['counter','nums']);
+        const clicks = state.getIn(['counter','clicks']);
+        return state.set('counter',fromJS({nums:nums-1,clicks:clicks+1}));
     },
-    ADD_FIVE: (state,action) =>{
-        return state.updateIn(['counter','nums'],value=>value+action.nums);
+    [counterActions.ADD_NUM]: (state,{num}) =>{
+        const nums = state.getIn(['counter','nums']);
+        const clicks = state.getIn(['counter','clicks']);
+        return state.set('counter',fromJS({nums:nums+num,clicks:clicks+1}));
     }
 };

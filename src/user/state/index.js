@@ -1,5 +1,10 @@
 import { fromJS } from 'immutable';
 
+export const userActions ={
+    SET_USER_DATA : "SET_USER_DATA",
+    SET_USER_LOG_OUT: "SET_USER_LOG_OUT"
+}
+
 export const userState = fromJS({
     user:{
         id: 0,
@@ -9,7 +14,10 @@ export const userState = fromJS({
 });
 
 export const userReducers = {
-    SET_USER_DATA : (state,action) =>{
-        return state.mergeIn(['user'],action.user);
-    }
+    [userActions.SET_USER_DATA] : (state,user) =>{
+        return state.mergeIn(['user'],user);
+    },
+    [userActions.SET_USER_LOG_OUT]: (state) =>{
+        return state.merge(userState);
+    },
 };

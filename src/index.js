@@ -7,7 +7,6 @@ import Counter from './counter';
 import User from './user';
 
 const App = () =>{
-
     return(<StoreProvider>
         <User />
         <Counter />

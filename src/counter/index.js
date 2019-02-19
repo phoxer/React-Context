@@ -1,18 +1,20 @@
 import React,{ useContext } from 'react';
 import { StoreContext } from '../Store';
+import { counterActions } from './state';
 
 const Counter = (props) =>{
-    const {state,dispatchState} = useContext(StoreContext);
+    const {state,setGlobalState} = useContext(StoreContext);
+    const { ADD,REST,ADD_NUM } = counterActions;
     const { nums,clicks } = state.get('counter').toJS();
 
     const add = () =>{
-        dispatchState({type:"ADD"});
+        setGlobalState(ADD);
     }
     const rest = () =>{
-        dispatchState({type:"REST"});
+        setGlobalState(REST);
     }
     const addFive = () =>{
-        dispatchState({type:"ADD_FIVE",nums:5});
+        setGlobalState(ADD_NUM,{num:5});
     }
 
     return (<div className="card p-3 m-2">
