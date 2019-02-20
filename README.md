@@ -107,4 +107,8 @@ const User = (props) =>{
 }
 ```
 
+<<<<<<< HEAD
 This sample was developed by http://www.phoxer.com
+=======
+This sample was developed by http://www.phoxer.com
+>>>>>>> 098e0f5c5a0341aedc6e617df2312a3a7428880d
