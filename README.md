@@ -10,15 +10,12 @@ import { userState,userReducers } from '../user/state';
 export const StoreContext = createContext();
 
 //IMPORTAMOS ESTADOS Y LOS COMBINAMOS
-const initialState = fromJS({});
-
-const combineStates = (initialState) =>{
-    return initialState.merge(userState,counterState);
+const initialState = {
+    ...userState
 }
 
 //IMPORTAMOS REDUCERS Y LOS COMBINAMOS
 const combineReducers={
-    ...counterReducers,
     ...userReducers
 }
 
